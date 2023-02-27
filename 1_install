@@ -1,0 +1,13 @@
+ 1 here visit (terraform.io)
+ 2 will get all the plugins 
+ 3 go acordingly and create one file named main.tf\
+ 
+ 
+ 4 terraform init
+ 5 terraform validate
+ 6 terraorm plan
+ 7 terraform apply
+ 
+ 8 terraform destroy
+ 
+ AWS resource link ---- https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip
