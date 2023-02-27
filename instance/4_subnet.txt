@@ -1,0 +1,19 @@
+#cloud cardentials
+
+provider "aws" {
+     region= "ap-south-1" 
+ #   access_key        = "*************"
+ #   secret_access_key = "*************"
+
+}
+#resource cardentials
+
+resource "aws_subnet" "example_pvt_subnet_b" {
+    vpc_id             = aws_vpc.example_vpc.id 
+     cidr_block         = "10.0.2.0/24" 
+     availability_zone  = "ap-south-1b" 
+     tags               =
+          {
+            Name = "example_pvt_subnet_b"
+          }
+}

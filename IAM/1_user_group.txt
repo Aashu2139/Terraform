@@ -1,0 +1,10 @@
+#cloud cardentials
+
+
+
+#1 iam group 
+
+resource "aws_iam_group" "developers" {
+  name = "developers"
+  path = "/users/"
+}

@@ -1,0 +1,32 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.16"
+    }
+  }
+
+  required_version = ">= 1.2.0"
+}
+#-------------------------------------------------------------------------
+# cloud provider 
+provider "aws" {
+  region  = "us-west-2"
+#  access_key = "****************"
+#  secret_access_key = "*****************"
+}
+#------------------------------------------------------------------------
+
+# cloud resource 
+resource "aws_instance" "app_server" {
+  ami           = "ami-13gghdbjs645"
+  instance_type = "t2.micro"
+  count = 2
+  tags = {
+    Name = "ExampleAppServerInstance"
+  }
+}
+
+#above will create 2 instance with same name what iff u want diffrent one
+#then simply copy resorce and make changes and apply 
+

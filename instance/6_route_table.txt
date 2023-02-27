@@ -1,0 +1,25 @@
+#cloud cardentials
+
+
+provider "aws" {
+     region= "ap-south-1"
+ #   access_key        = "*************"
+ #   secret_access_key = "*************"
+
+
+
+
+#resource cardentials
+resource "aws_route_table" "example_public_route_table" {
+  ​​​​ vpc_id = aws_vpc.example_vpc.id route
+       {​​​​
+       cidr_block = "0.0.0.0/0" 
+       gateway_id = aws_internet_gateway.example_internet_gateway.id
+       }​​​​
+  
+  tags = 
+       {
+       ​​​​ Name = "example_public_route_table"
+       }​​​​
+}​​​​
+

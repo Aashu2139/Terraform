@@ -1,0 +1,20 @@
+#cloud cardentials
+provider "aws" {
+     region= "ap-south-1"
+ #   access_key        = "*************"
+ #   secret_access_key = "*************"
+
+
+
+#association of ROUTE TABLE with subnet
+resource "aws_route_table_association" "example_public_route_table_association_a" {​​​​
+  subnet_id      =   aws_subnet.example_public_subnet_a.id
+  route_table_id =   aws_route_table.example_public_route_table.id
+}​​​​
+# association of SUBNET with NACL
+resource "aws_network_acl_association" "example_network_acl_association_a"
+  {​​​​
+    subnet_id      = aws_subnet.example_private_subnet_a.id
+    network_acl_id = aws_network_acl.example_network_acl.id
+}​​​​
+

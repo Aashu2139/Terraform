@@ -1,0 +1,34 @@
+#cloud cardentials  
+provider "aws" {
+     region= "ap-south-1"
+ #   access_key        = "*************"
+ #   secret_access_key = "*************"
+
+}
+
+# newtwork access controll list
+
+  resource "aws_network_acl" "example_network_acl" {​​​​
+ ​​​ vpc_id =  aws_vpc.example_vpc.id
+   ingress {​​​​
+           rule_no = 100
+           action = "allow"
+           protocol = "tcp"
+           from_port = 80
+           to_port = 80
+           cidr_block = "0.0.0.0/0"
+           }​​​​
+   egress  {​
+          ​​​​ rule_no = 100
+           action = "allow"
+           protocol = "tcp"
+           from_port = 80
+           to_port = 80
+           cidr_block = "0.0.0.0/0"
+           }​​​​
+  tags   =
+       {​
+        ​​​​ Name = "example_network_acl"
+       }​​​​
+}​​​​
+

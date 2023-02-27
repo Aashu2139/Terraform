@@ -1,0 +1,44 @@
+#cloud cardentials
+
+
+
+
+
+#loadbalance network cardentials
+
+resource "aws_lb" "test" {
+  name               = "test-lb-tf"
+  internal           = false
+  load_balancer_type = "network"
+#here give public facing subnets as it gonna handle network load 
+
+  subnets            = [for subnet in aws_subnet.public : subnet.id]
+
+  enable_deletion_protection = true
+
+  tags = {
+    Environment = "production"
+  }
+}
+
+
+#subnets mapping for elastic ip 
+  
+subnet_mapping {
+    subnet_id     = aws_subnet.example1.id
+    allocation_id = aws_eip.example1.id
+  }
+
+  subnet_mapping {
+    subnet_id     = aws_subnet.example2.id
+    allocation_id = aws_eip.example2.id
+  }
+}
+
+
+# pvt ip
+
+subnet_mapping {
+    subnet_id            = aws_subnet.example1.id
+    private_ipv4_address = "10.0.1.15"
+  }
